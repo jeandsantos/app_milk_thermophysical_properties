@@ -2,11 +2,6 @@
 if(!require(shiny)) {install.packages("shiny")} else {require(shiny)}
 if(!require(shinythemes)) {install.packages("shinythemes")} else {require(shinythemes)}
 if(!require(tidyverse)) {install.packages("tidyverse")} else {require(tidyverse)}
-if(!require(broom)) {install.packages("broom")} else {require(broom)}
-if(!require(caret)) {install.packages("caret")} else {require(caret)}
-if(!require(DT)) {install.packages("DT")} else {require(DT)}
-if(!require(nnet)) {install.packages("nnet")} else {require(nnet)}
-if(!require(RCurl)) {install.packages("RCurl")} else {require(RCurl)}
 if(!require(knitr)) {install.packages("knitr")} else {require(knitr)}
 if(!require(kableExtra)) {install.packages("kableExtra")} else {require(kableExtra)}
 
@@ -17,14 +12,6 @@ if(!exists("dataset")) {dataset <- read.csv(file = "https://raw.githubuserconten
 if(!exists("model_density")) {model_density <- base::readRDS("models/milk_properties_density_model_selected.rds")}
 if(!exists("model_heat_capacity")) {model_heat_capacity <- base::readRDS("models/milk_properties_heat_capacity_model_selected.rds")}
 if(!exists("model_thermal_conductivity")) {model_thermal_conductivity <- base::readRDS("models/milk_properties_thermal_conductivity_model_selected.rds")}
-
-# # Import Data
-# if(!exists("dataset")) {dataset <- read.csv(file = "Data_Milk_Thermophysical_Properties_Transformed.csv", header = TRUE, row.names = NULL)}
-# 
-# # Create Linear Regression Model 
-# if(!exists("model_density")) {model_density <- base::readRDS("milk_properties_density_Model_Selected.rds")}
-# if(!exists("model_heat_capacity")) {model_heat_capacity <- base::readRDS("milk_properties_heat_capacity_model_selected.rds")}
-# if(!exists("model_thermal_conductivity")) {model_thermal_conductivity <- base::readRDS("milk_properties_thermal_conductivity_model_selected.rds")}
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {

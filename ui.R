@@ -5,7 +5,7 @@ if(!require(shinythemes)) {install.packages("shinythemes")} else {require(shinyt
 # Define UI for application that draws a histogram
 shinyUI(navbarPage(
   title = "MilkApp: Prediction of Milk Density, Heat Capacity and Thermal Conductivity", 
-  windowTitle = "MilkApp: Predicting Milk Properties",
+  windowTitle = "MilkApp | Predicting Milk Properties",
   theme = shinytheme("flatly"),
   fluidPage(
     # # Application title
@@ -66,8 +66,8 @@ shinyUI(navbarPage(
   # -------------------------------
   # Footer
   tags$span(style="color:grey", 
-            tags$footer(("Made by "),tags$a(href = "https://www.linkedin.com/in/jeandsantos/", target = "_blank", "Jean Dos Santos"),  
-                        ("using"), tags$a(href="http://www.r-project.org/",target="_blank","R"),("and"), tags$a(href="http://shiny.rstudio.com",target="_blank","Shiny."),
+            tags$footer(("Made by "), strong(tags$a(href = "https://www.linkedin.com/in/jeandsantos/", target = "_blank", "Jean Dos Santos")),  
+                        ("using"), strong(tags$a(href="http://www.r-project.org/",target="_blank","R")), "and", strong(tags$a(href="http://shiny.rstudio.com",target="_blank","Shiny.")),
                         align = "left")
             )
   )
