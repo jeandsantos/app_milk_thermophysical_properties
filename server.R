@@ -38,7 +38,7 @@ shinyServer(function(input, output) {
                                                        newdata = input_data_frame(), 
                                                        interval="predict") %>% round(3) })
 
-    output$input_DT_data_table <- renderText({
+    output$input_data_table <- renderText({
       
       bind_rows(`Density` = predicted_density()[,1:3],
                 `Heat Capacity` = predicted_heat_capacity()[,1:3],
@@ -47,9 +47,10 @@ shinyServer(function(input, output) {
         magrittr::set_rownames(., c("Density, kg/m³", "Heat Capacity, J/(g.K)", "Thermal Conductivity, W/(m.K)")) %>% 
         knitr::kable(digits = 3, 
                      align = "c", 
-                     caption = "Predicted values for milk thermophysical properties", 
-                     colnames =  c("Predicted", "Lower 95% PI", "Upper 95% PI"), 
-                     rownames = c("Density, kg/m³", "Heat Capacity, J/(g.K)", "Thermal Conductivity, W/(m.K)")) %>% 
+                     caption = "Predicted values for milk thermophysical properties"
+                     # colnames =  c("Predicted", "Lower 95% PI", "Upper 95% PI"), 
+                     # rownames = c("Density, kg/m³", "Heat Capacity, J/(g.K)", "Thermal Conductivity, W/(m.K)")
+                     ) %>% 
         kableExtra::kable_styling(., full_width = F, position = "left", bootstrap_options = c("striped", "hover", "condensed"), font_size = 18)
     })
 })

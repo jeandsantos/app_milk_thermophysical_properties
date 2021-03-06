@@ -6,12 +6,8 @@ if(!require(shinythemes)) {install.packages("shinythemes")} else {require(shinyt
 shinyUI(navbarPage(
   title = "MilkApp: Prediction of Milk Density, Heat Capacity and Thermal Conductivity", 
   windowTitle = "MilkApp | Predicting Milk Properties",
-  theme = shinytheme("flatly"),
+  theme = shinythemes::shinytheme("flatly"),
   fluidPage(
-    # # Application title
-    # titlePanel("Milk Thermophysical Properties"),
-    
-    # Sidebar with a slider input for number of bins 
     sidebarLayout(
       sidebarPanel(
         sliderInput(inputId = "temperature",
@@ -20,7 +16,8 @@ shinyUI(navbarPage(
                     max = 85,
                     value = 20,
                     round = 1,
-                    step = 0.5),
+                    step = 0.5, 
+                    post = "°C"),
         
         sliderInput(inputId = "fat",
                     label = "Fat (%):",
@@ -28,7 +25,8 @@ shinyUI(navbarPage(
                     max = 8,
                     value = 3.5,
                     round = 1,
-                    step = 0.1),
+                    step = 0.1, 
+                    post = "%"),
         
         sliderInput(inputId = "water",
                     label = "Water (%):",
@@ -36,22 +34,27 @@ shinyUI(navbarPage(
                     max = 95,
                     value = 85,
                     round = 1,
-                    step = 0.2), width = 3
+                    step = 0.2,
+                    post = "%"), width = 3
         ),
       mainPanel(
         tabsetPanel(id = "tabspabel", type = "tabs",
                     # Tab 1
                     tabPanel(title = "Milk Properties",
                              br(),
-                             htmlOutput(outputId = "input_DT_data_table")
+                             htmlOutput(outputId = "input_data_table")
                              ),
                     # Tab 2
-                    tabPanel(title = "Instructions",br(),
+                    tabPanel(title = "Instructions",
+                             icon = icon("align-left"),
+                             br(),
                              ("Use the sliders to change the value of each parameter. The values of the properties are predicted based on the selected values."),
                              br(),br(),
                              ("The table displays the predicted value for each parameter and the respective lower and upper 95% prediction interval.")
                              ),
-                    tabPanel(title = "Additional Information",br(),
+                    tabPanel(title = "Additional Information",
+                             icon = icon("info-circle"),
+                             br(),
                              ("For app documentation and code visit the "), a(href = "https://github.com/jeandsantos/milk_thermophysical_properties/", "GitHub page"),
                              br(),br(),
                              ("Information about the models used are available via this "), a(href = "https://rpubs.com/jeandsantos88/milk_thermophysical_properties", "link."),
