@@ -36,14 +36,14 @@ shinyUI(navbarPage(
                     max = 95,
                     value = 85,
                     round = 1,
-                    step = 0.2)
+                    step = 0.2), width = 3
         ),
       mainPanel(
         tabsetPanel(id = "tabspabel", type = "tabs",
                     # Tab 1
                     tabPanel(title = "Milk Properties",
                              br(),
-                             DT::dataTableOutput(outputId = "input_DT_data_table")
+                             htmlOutput(outputId = "input_DT_data_table")
                              ),
                     # Tab 2
                     tabPanel(title = "Instructions",br(),
@@ -58,7 +58,7 @@ shinyUI(navbarPage(
                              br(),br(),
                              ("For questions or feedback please contact via "), a(href = "https://www.linkedin.com/in/jeandsantos/", "LinkedIn"), (" or "), a(href = "https://github.com/jeandsantos/", "GitHub")
                     )
-                    )
+                    ), width = 9
         )
       )
     ),
